@@ -18,13 +18,14 @@ public class PlayerController : MonoBehaviour
 
     public bool canMove = true;
 
-    
+
     void Start()
-    {  
-         if (instance == null)
+    {
+        if (instance == null)
         {
             instance = this;
-        } else
+        }
+        else
         {
             if (instance != this)
             {
@@ -33,32 +34,33 @@ public class PlayerController : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
-	}
+    }
 
-    
+
     void Update()
     {//move left right
-        if(canMove)
+        if (canMove)
         {
-        theRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal"),Input.GetAxisRaw("Vertical")) * moveSpeed;
-        
+            theRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * moveSpeed;
+
         }
-        else {
+        else
+        {
             theRB.velocity = Vector2.zero;
         }
-        myAnim.SetFloat("moveX",theRB.velocity.x);
-        myAnim.SetFloat("moveY",theRB.velocity.y);
+        myAnim.SetFloat("moveX", theRB.velocity.x);
+        myAnim.SetFloat("moveY", theRB.velocity.y);
 
-        if(Input.GetAxisRaw("Horizontal") == 1 || Input.GetAxisRaw("Horizontal") == -1 || Input.GetAxisRaw("Vertical") == 1 ||  Input.GetAxisRaw("Vertical") == -1)     //move right 
+        if (Input.GetAxisRaw("Horizontal") == 1 || Input.GetAxisRaw("Horizontal") == -1 || Input.GetAxisRaw("Vertical") == 1 || Input.GetAxisRaw("Vertical") == -1)     //move right 
         {
-            if(canMove)
+            if (canMove)
             {
-                myAnim.SetFloat("lastMoveX",Input.GetAxisRaw("Horizontal"));
-                myAnim.SetFloat("lastMoveY",Input.GetAxisRaw("Vertical"));
+                myAnim.SetFloat("lastMoveX", Input.GetAxisRaw("Horizontal"));
+                myAnim.SetFloat("lastMoveY", Input.GetAxisRaw("Vertical"));
             }
         }
 
-        transform.position = new Vector3(Mathf.Clamp(transform.position.x, bottomLeftLimit.x, topRightLimit.x), Mathf.Clamp(transform.position.y, bottomLeftLimit.y, topRightLimit.y),transform.position.z);
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, bottomLeftLimit.x, topRightLimit.x), Mathf.Clamp(transform.position.y, bottomLeftLimit.y, topRightLimit.y), transform.position.z);
 
     }
 

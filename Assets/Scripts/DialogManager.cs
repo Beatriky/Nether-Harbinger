@@ -17,6 +17,10 @@ public class DialogManager : MonoBehaviour
 
     private bool justStarted;
 
+    private string questToMark;
+    private bool MarkQuestComplete;
+    private bool shouldMarkQuest;
+
     void Start()
     {
         instance = this;
@@ -37,9 +41,24 @@ public class DialogManager : MonoBehaviour
                 if(currentLine >= dialogLines.Length)
                 {
                     dialogBox.SetActive(false);
+
                     GameManager.instance.dialogActive = false;
 
-                }else
+
+                    if(shouldMarkQuest)
+                    {
+                        shouldMarkQuest = false;
+                        if(MarkQuestComplete)
+                        {
+                            QuestManager.instance.MarkQuestComplete(questToMark);
+                        }
+                        else
+                        {
+                            QuestManager.instance.MarkQuestIncomplete(questToMark);
+                        }
+                    }
+                }
+                else
                 {
                     CheckIfName();
                     dialogText.text = dialogLines[currentLine];
@@ -77,5 +96,13 @@ public class DialogManager : MonoBehaviour
             nameText.text = dialogLines[currentLine].Replace("n-","");
             currentLine++;
         }
+    }
+
+    public void ShouldActivateQuestAtEnd(string questName,bool markComplete)
+    {
+        questToMark = questName;
+        MarkQuestComplete = markComplete;
+
+        shouldMarkQuest = true;
     }
 }

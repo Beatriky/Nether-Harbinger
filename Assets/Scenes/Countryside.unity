@@ -2051,6 +2051,10 @@ PrefabInstance:
       propertyPath: theMap
       value: 
       objectReference: {fileID: 1752179061}
+    - target: {fileID: 3551595183001038224, guid: f00ca5373c90267458717e88b6bf7ee6, type: 3}
+      propertyPath: musicToPlay
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3551595183001038227, guid: f00ca5373c90267458717e88b6bf7ee6, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -11999,14 +12003,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 238107986676302167, guid: 9bcd9e9f1079ac8459903c9976009a29, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 7043495902375008206, guid: 0f5c00647a8415f409ac12c7e92301cf, type: 3}
-    - target: {fileID: 238107986676302167, guid: 9bcd9e9f1079ac8459903c9976009a29, type: 3}
-      propertyPath: UIScreen
-      value: 
-      objectReference: {fileID: 5306460806224734039, guid: 5c9fa903fe063cc41bdc6a03db528059, type: 3}
     - target: {fileID: 5988789255007760744, guid: 9bcd9e9f1079ac8459903c9976009a29, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -12054,10 +12050,6 @@ PrefabInstance:
     - target: {fileID: 6802078248755986661, guid: 9bcd9e9f1079ac8459903c9976009a29, type: 3}
       propertyPath: m_Name
       value: Essentials Loader
-      objectReference: {fileID: 0}
-    - target: {fileID: 6802078248755986661, guid: 9bcd9e9f1079ac8459903c9976009a29, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9bcd9e9f1079ac8459903c9976009a29, type: 3}
