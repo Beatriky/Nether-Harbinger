@@ -90,20 +90,17 @@ public class GameMenu : MonoBehaviour
     public void ToggleWindow(int windowNumber)
     {
         UpdateMainStats();
-
         for (int i = 0; i < windows.Length; i++)
         {
             if (i == windowNumber)
             {
                 windows[i].SetActive(!windows[i].activeInHierarchy);
-
             }
             else
             {
                 windows[i].SetActive(false);
             }
         }
-
         itemCharChoiceMenu.SetActive(false);
     }
 
@@ -132,17 +129,17 @@ public class GameMenu : MonoBehaviour
     }
 
     public void StatusChar(int selected)
-    {
+    {      //filling and updating the status of the characters
         statusName.text = playerStats[selected].charName;
         statusHP.text = "" + playerStats[selected].currentHP + "/" + playerStats[selected].maxHP;
         statusMP.text = "" + playerStats[selected].currentMP + "/" + playerStats[selected].maxMP;
         statusStr.text = playerStats[selected].strength.ToString();
         statusDef.text = playerStats[selected].defense.ToString();
+        
         if (playerStats[selected].equippedWpn != "")         //if we have a weapon equipped
         {
             statusWpnEqpd.text = playerStats[selected].equippedWpn;
         }
-
         statusWpnPwr.text = playerStats[selected].wpnPwr.ToString();
 
         if (playerStats[selected].equippedArmr != "")
@@ -185,7 +182,6 @@ public class GameMenu : MonoBehaviour
         if (activeItem.isWeapon || activeItem.isArmor)
         {
             useButtonText.text = "Equip";
-
         }
         itemName.text = activeItem.itemName;
         itemDescription.text = activeItem.description;
@@ -202,6 +198,7 @@ public class GameMenu : MonoBehaviour
     public void OpenItemCharacterChoice()
     {
         itemCharChoiceMenu.SetActive(true);
+        
         for (int i = 0; i < itemCharChoiceNames.Length; i++)
         {
             itemCharChoiceNames[i].text = GameManager.instance.playerStats[i].charName;

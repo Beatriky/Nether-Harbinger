@@ -15,6 +15,7 @@ public class CameraController : MonoBehaviour
 
     public int musicToPlay;
     private bool musicStarted;
+    
     void Start()
     {
         target = FindObjectOfType<PlayerController>().transform;
@@ -34,7 +35,8 @@ public class CameraController : MonoBehaviour
         transform.position = new Vector3(target.position.x, target.position.y, transform.position.z);
 
         //keep the camera inside the bounds
-        transform.position = new Vector3(Mathf.Clamp(transform.position.x, bottomLeftLimit.x, topRightLimit.x), Mathf.Clamp(transform.position.y, bottomLeftLimit.y, topRightLimit.y), transform.position.z);
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, bottomLeftLimit.x, topRightLimit.x),
+         Mathf.Clamp(transform.position.y, bottomLeftLimit.y, topRightLimit.y), transform.position.z);
     
         if(!musicStarted )
         {   

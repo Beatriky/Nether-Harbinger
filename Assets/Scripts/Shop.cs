@@ -16,13 +16,12 @@ public class Shop : MonoBehaviour
     public ItemButton[] sellItemButtons;
     public Item selectedItem;
     public Text buyItemName, buyItemDescription, buyItemValue;
-    public Text sellItemName,sellItemDescription, sellItemValue;
+    public Text sellItemName, sellItemDescription, sellItemValue;
 
     void Start()
     {
         instance = this;
     }
-
 
     void Update()
     {
@@ -36,7 +35,6 @@ public class Shop : MonoBehaviour
         shopMenu.SetActive(true);
         OpenBuyMenu();
         GameManager.instance.shopActive = true;
-
         goldText.text = GameManager.instance.currentGold.ToString() + "G";
     }
 
@@ -47,7 +45,7 @@ public class Shop : MonoBehaviour
     }
 
     public void OpenBuyMenu()
-    {   
+    {
         buyItemButtons[0].Press();  //see the description of the first item
 
         buyMenu.SetActive(true);
@@ -74,7 +72,7 @@ public class Shop : MonoBehaviour
     }
 
     public void OpenSellMenu()
-    {   
+    {
         sellItemButtons[0].Press();
 
         buyMenu.SetActive(false);
@@ -85,7 +83,7 @@ public class Shop : MonoBehaviour
 
     private void ShowSellItems()
     {
-         GameManager.instance.SortItems();
+        GameManager.instance.SortItems();
 
         for (int i = 0; i < buyItemButtons.Length; i++)
         {
@@ -120,28 +118,28 @@ public class Shop : MonoBehaviour
     }
 
     public void BuyItem()
-    {   if(selectedItem != null)
+    {
+        if (selectedItem != null)
         {
-        if(GameManager.instance.currentGold >= selectedItem.value)
-        {
-            GameManager.instance.currentGold -= selectedItem.value;
-            GameManager.instance.AddItem(selectedItem.itemName);
-        }
-        goldText.text = GameManager.instance.currentGold.ToString()+"G";
+            if (GameManager.instance.currentGold >= selectedItem.value)
+            {
+                GameManager.instance.currentGold -= selectedItem.value;
+                GameManager.instance.AddItem(selectedItem.itemName);
+            }
+            goldText.text = GameManager.instance.currentGold.ToString() + "G";
         }
     }
 
     public void SellItem()
     {
-        if(selectedItem != null)
-        {   
+        if (selectedItem != null)
+        {
             GameManager.instance.currentGold += Mathf.FloorToInt(selectedItem.value * 0.5f);
             //remove the item
             GameManager.instance.RemoveItem(selectedItem.itemName);
         }
-        goldText.text=GameManager.instance.currentGold.ToString()+"G";
-        
+        goldText.text = GameManager.instance.currentGold.ToString() + "G";
+
         ShowSellItems();
     }
-    
 }

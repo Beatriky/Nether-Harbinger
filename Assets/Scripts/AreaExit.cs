@@ -15,7 +15,7 @@ public class AreaExit : MonoBehaviour
 
     void Start()
     {
-         theEntrance.transitionName = areaTransitionName;
+        theEntrance.transitionName = areaTransitionName;
     }
 
     void Update()
@@ -38,11 +38,13 @@ public class AreaExit : MonoBehaviour
             //SceneManager.LoadScene(areaToLoad);
             shouldLoadAfterFade = true;
 
-           // GameManager.instance.fadingBetweenAreas = true;
+           // GameManager.instance.fadingBetweenAreas = false;
 
             UIFade.instance.FadeToBlack();
             
             PlayerController.instance.areaTransitionName = areaTransitionName;
+
+
         } 
     }
 }

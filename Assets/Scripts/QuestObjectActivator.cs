@@ -8,11 +8,6 @@ public class QuestObjectActivator : MonoBehaviour
     public string questToCheck;
     public bool activeIfComplete;
     private bool initialCheckDone;
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         if(!initialCheckDone)

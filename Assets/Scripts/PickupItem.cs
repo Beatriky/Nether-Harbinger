@@ -6,12 +6,6 @@ public class PickupItem : MonoBehaviour
 {
     private bool canPickup;
 
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if(canPickup && Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.F) && PlayerController.instance.canMove)

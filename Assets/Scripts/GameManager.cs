@@ -64,8 +64,6 @@ public class GameManager : MonoBehaviour
                 return referenceItems[i];
             }
         }
-
-
         return null;
     }
     //we want to ordonate the list of items - we dont want gaps in our inventory
@@ -181,7 +179,6 @@ public class GameManager : MonoBehaviour
             {
                 PlayerPrefs.SetInt("Player_" + playerStats[i].charName + "_active", 0);
             }
-
             PlayerPrefs.SetInt("Player_" + playerStats[i].charName + "_Level", playerStats[i].playerLevel);
             PlayerPrefs.SetInt("Player_" + playerStats[i].charName + "_CurrentExp", playerStats[i].currentEXP);
             PlayerPrefs.SetInt("Player_" + playerStats[i].charName + "_CurrentHP", playerStats[i].currentHP);
@@ -195,7 +192,6 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetString("Player_" + playerStats[i].charName + "_EquippedWpn", playerStats[i].equippedWpn);
             PlayerPrefs.SetString("Player_" + playerStats[i].charName + "_EquippedArmr", playerStats[i].equippedArmr);
         }
-
         //store inventory data
         for (int i = 0; i < itemsHeld.Length; i++)
         {
@@ -209,7 +205,7 @@ public class GameManager : MonoBehaviour
         PlayerController.instance.transform.position = new Vector3(PlayerPrefs.GetFloat("Player_Position_x"), PlayerPrefs.GetFloat("Player_Position_y"), PlayerPrefs.GetFloat("Player_Position_z"));
        // SceneManager.LoadScene(PlayerPrefs.GetString("Current_Scene"));
         for (int i = 0; i < playerStats.Length; i++)
-        {
+        {   //check if save is active
             if (PlayerPrefs.GetInt("Player_" + playerStats[i].charName + "_active") == 0)
             {
                 playerStats[i].gameObject.SetActive(false);

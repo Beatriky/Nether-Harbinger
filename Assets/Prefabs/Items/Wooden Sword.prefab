@@ -102,7 +102,7 @@ MonoBehaviour:
   description: Easily broken
   value: 15
   itemSprite: {fileID: -2178467043915682464, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
-  amountToChange: 50
+  amountToChange: 25
   affectHP: 0
   affectMP: 0
   affectStr: 1

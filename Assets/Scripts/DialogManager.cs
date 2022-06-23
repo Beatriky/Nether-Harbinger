@@ -9,14 +9,10 @@ public class DialogManager : MonoBehaviour
     public Text nameText;
     public GameObject dialogBox;
     public GameObject nameBox;
-
     public string[] dialogLines;
     public int currentLine;
-
     public static DialogManager instance;
-
     private bool justStarted;
-
     private string questToMark;
     private bool MarkQuestComplete;
     private bool shouldMarkQuest;
@@ -28,50 +24,50 @@ public class DialogManager : MonoBehaviour
         //dialogText.text = dialogLines[currentLine];
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(dialogBox.activeInHierarchy)
+        if (dialogBox.activeInHierarchy)
         {
-            if(Input.GetButtonUp("Fire1")|| (Input.GetKeyDown(KeyCode.F)))
+            if (Input.GetButtonUp("Fire1") || (Input.GetKeyDown(KeyCode.F)))
             {
-                if(!justStarted)
+                if (!justStarted)
                 {
                     currentLine++;
-                if(currentLine >= dialogLines.Length)
-                {
-                    dialogBox.SetActive(false);
-
-                    GameManager.instance.dialogActive = false;
-
-
-                    if(shouldMarkQuest)
+                    if (currentLine >= dialogLines.Length)
                     {
-                        shouldMarkQuest = false;
-                        if(MarkQuestComplete)
-                        {
-                            QuestManager.instance.MarkQuestComplete(questToMark);
+                        dialogBox.SetActive(false);
+
+                        GameManager.instance.dialogActive = false;
+
+                        if (shouldMarkQuest)
+                        {   //we dont want to reactivate the quest if we talk again
+                            shouldMarkQuest = false;
+                            if (MarkQuestComplete)
+                            {
+                                QuestManager.instance.MarkQuestComplete(questToMark);
+                            }
+                            else
+                            {
+                                QuestManager.instance.MarkQuestIncomplete(questToMark);
+                            }
                         }
-                        else
-                        {
-                            QuestManager.instance.MarkQuestIncomplete(questToMark);
-                        }
+                    }
+                    else
+                    {
+                        CheckIfName();
+                        dialogText.text = dialogLines[currentLine];
+
                     }
                 }
                 else
                 {
-                    CheckIfName();
-                    dialogText.text = dialogLines[currentLine];
-
-                }
-                }else{
                     justStarted = false;
                 }
             }
         }
     }
 
-    public void ShowDialog(string[] newLines,bool isPerson)
+    public void ShowDialog(string[] newLines, bool isPerson)
     {
         dialogLines = newLines;
 
@@ -85,24 +81,23 @@ public class DialogManager : MonoBehaviour
         justStarted = true;
 
         nameBox.SetActive(isPerson);
-        
+
         GameManager.instance.dialogActive = true;
     }
 
     public void CheckIfName()
     {
-        if(dialogLines[currentLine].StartsWith("n-"))
+        if (dialogLines[currentLine].StartsWith("n-"))
         {
-            nameText.text = dialogLines[currentLine].Replace("n-","");
+            nameText.text = dialogLines[currentLine].Replace("n-", "");
             currentLine++;
         }
     }
 
-    public void ShouldActivateQuestAtEnd(string questName,bool markComplete)
+    public void ShouldActivateQuestAtEnd(string questName, bool markComplete)
     {
         questToMark = questName;
         MarkQuestComplete = markComplete;
-
         shouldMarkQuest = true;
     }
 }

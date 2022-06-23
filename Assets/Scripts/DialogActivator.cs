@@ -14,31 +14,25 @@ public class DialogActivator : MonoBehaviour
     public string questToMark;
     public bool markComplete;
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
-        if(canActivate && Input.GetButtonDown("Fire1") && !DialogManager.instance.dialogBox.activeInHierarchy)
-        {
+        if (canActivate && (Input.GetButtonDown("Fire1") || (Input.GetKeyDown(KeyCode.F))) && !DialogManager.instance.dialogBox.activeInHierarchy)
+        {   //we activate the dialog
             DialogManager.instance.ShowDialog(lines, isPerson);
+            //activate the quest with the name of the quest
             DialogManager.instance.ShouldActivateQuestAtEnd(questToMark, markComplete);
         }
     }
-
-    private void OnTriggerEnter2D (Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Player")
+        if (other.tag == "Player")
         {
             canActivate = true;
         }
     }
-
-      private void OnTriggerExit2D (Collider2D other)
+    private void OnTriggerExit2D(Collider2D other)
     {
-        if(other.tag == "Player")
+        if (other.tag == "Player")
         {
             canActivate = false;
         }

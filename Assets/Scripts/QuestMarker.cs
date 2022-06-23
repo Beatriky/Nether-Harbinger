@@ -9,11 +9,6 @@ public class QuestMarker : MonoBehaviour
    public bool markOnEnter;
    private bool canMark;
    public bool deactivateOnMarking;
-    void Start()
-    {
-        
-    }
-
    
     void Update()
     {
@@ -34,11 +29,11 @@ public class QuestMarker : MonoBehaviour
         {
             QuestManager.instance.MarkQuestIncomplete(questToMark);
         }
-
+        //we want to active
         gameObject.SetActive(!deactivateOnMarking);
     }
     private void OnTriggerEnter2D(Collider2D other)
-    {
+    {   //when we first enter the area we want to activate the quest
         if(other.tag == "Player")
         {
             if(markOnEnter)

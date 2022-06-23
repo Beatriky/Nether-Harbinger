@@ -18,15 +18,21 @@ EditorBuildSettings:
     path: Assets/Scenes/Shop.unity
     guid: 3a8aa0e8a14a8f4438b809e84ec5c4d4
   - enabled: 1
-    path: Assets/Scenes/Test.unity
-    guid: 1325e18c6db20af40b5cfda23dc8c3e4
-  - enabled: 1
-    path: Assets/Scenes/Test2.unity
-    guid: 19c130f92b42cae4e9c2a103bc53c15d
-  - enabled: 1
     path: Assets/Scenes/LoadingScene.unity
     guid: 1cc9e7a86c6a01a48acef7e28edd2d1b
   - enabled: 1
     path: Assets/Scenes/Weaponsmith.unity
     guid: 1b27f1a56e1b2c446a713d3677ea33ff
+  - enabled: 1
+    path: Assets/Scenes/Test2.unity
+    guid: 19c130f92b42cae4e9c2a103bc53c15d
+  - enabled: 1
+    path: Assets/Scenes/Test.unity
+    guid: 1325e18c6db20af40b5cfda23dc8c3e4
+  - enabled: 1
+    path: Assets/Scenes/Cave.unity
+    guid: c59cc5f4c4f1522468a27c6264108819
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: df45f740b44e724449af09c2e1ec6734
   m_configObjects: {}

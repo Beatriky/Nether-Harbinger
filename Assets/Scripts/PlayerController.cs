@@ -9,8 +9,6 @@ public class PlayerController : MonoBehaviour
 
     public Animator myAnim;
 
-    public static PlayerController instance;
-
     public string areaTransitionName;
 
     private Vector3 bottomLeftLimit;
@@ -18,6 +16,7 @@ public class PlayerController : MonoBehaviour
 
     public bool canMove = true;
 
+    public static PlayerController instance;
 
     void Start()
     {
@@ -32,17 +31,16 @@ public class PlayerController : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-
         DontDestroyOnLoad(gameObject);
     }
 
-
     void Update()
-    {//move left right
+    { //move left right
         if (canMove)
         {
-            theRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * moveSpeed;
-
+            theRB.velocity =
+                new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"))
+                * moveSpeed;
         }
         else
         {
@@ -51,7 +49,12 @@ public class PlayerController : MonoBehaviour
         myAnim.SetFloat("moveX", theRB.velocity.x);
         myAnim.SetFloat("moveY", theRB.velocity.y);
 
-        if (Input.GetAxisRaw("Horizontal") == 1 || Input.GetAxisRaw("Horizontal") == -1 || Input.GetAxisRaw("Vertical") == 1 || Input.GetAxisRaw("Vertical") == -1)     //move right 
+        if (
+            Input.GetAxisRaw("Horizontal") == 1
+            || Input.GetAxisRaw("Horizontal") == -1
+            || Input.GetAxisRaw("Vertical") == 1
+            || Input.GetAxisRaw("Vertical") == -1
+        ) //move right
         {
             if (canMove)
             {
@@ -60,8 +63,11 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        transform.position = new Vector3(Mathf.Clamp(transform.position.x, bottomLeftLimit.x, topRightLimit.x), Mathf.Clamp(transform.position.y, bottomLeftLimit.y, topRightLimit.y), transform.position.z);
-
+        transform.position = new Vector3(
+            Mathf.Clamp(transform.position.x, bottomLeftLimit.x, topRightLimit.x),
+            Mathf.Clamp(transform.position.y, bottomLeftLimit.y, topRightLimit.y),
+            transform.position.z
+        );
     }
 
     public void SetBounds(Vector3 botLeft, Vector3 topRight)

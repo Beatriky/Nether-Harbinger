@@ -5,12 +5,6 @@ using UnityEngine.SceneManagement;
 public class LoadingScene : MonoBehaviour
 {
    public float waitToLoad;
-
-    void Start()
-    {
-        
-    }
-
     
     void Update()
     {

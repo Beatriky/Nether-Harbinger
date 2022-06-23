@@ -109,3 +109,9 @@ MonoBehaviour:
   movesAvailable:
   - Slash
   - Ice
+  - Fire
+  theSprite: {fileID: 8758666791974969457}
+  deadSprite: {fileID: 0}
+  aliveSprite: {fileID: 0}
+  shouldFade: 0
+  fadeSpeed: 1

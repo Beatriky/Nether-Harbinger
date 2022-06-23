@@ -22,7 +22,7 @@ public class QuestManager : MonoBehaviour
         {
            Debug.Log( CheckIfComplete("Quest Test"));
            MarkQuestComplete("Quest Test");
-           MarkQuestIncomplete("Fight the demon");
+           MarkQuestIncomplete("Enter cave");
         }
         if(Input.GetKeyDown(KeyCode.O))
         {
@@ -71,9 +71,9 @@ public class QuestManager : MonoBehaviour
 
     
     public void UpdateLocalQuestObjects()
-    {
+    {   //finds obj with quest obj activ script like the chests
         QuestObjectActivator[] questObjects = FindObjectsOfType<QuestObjectActivator>();
-
+        //check if there are quest obj 
         if(questObjects.Length > 0)
         {
             for (int i = 0; i< questObjects.Length; i++)

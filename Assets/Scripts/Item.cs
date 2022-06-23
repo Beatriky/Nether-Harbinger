@@ -10,38 +10,27 @@ public class Item : MonoBehaviour
     public bool isItem;
     public bool isWeapon;
     public bool isArmor;
+    public bool isGold;
     //public bool isFood;
     [Header("Item Details")]
-
     public string itemName;
     public string description;
     public int value;
     public Sprite itemSprite;
-
     [Header("Item Details")]
     public int amountToChange;  //how much hp, strength is gonna give u
     public bool affectHP;
     public bool affectMP;
     public bool affectStr;
-    [Header("Weapon/Armour Details")]
+    public bool affectGold;
+    [Header("Weapon/Armor Details")]
     public int weaponStrength;
     public int armorStrength;
-
-    void Start()
-    {
-        
-    }
-
-   
-    void Update()
-    {
-        
-    }
 
     public void Use(int charToUseOn)
     {
         CharStats selectedChar = GameManager.instance.playerStats[charToUseOn]; 
-
+      
         if(isItem)
         {
             if(affectHP)
@@ -84,6 +73,11 @@ public class Item : MonoBehaviour
                 selectedChar.equippedArmr = itemName;
                 selectedChar.armrPwr = armorStrength; 
             } 
+          /*  if(affectGold)
+            {
+                GameManager.instance.currentGold += amountToChange;
+            }
+            */
             GameManager.instance.RemoveItem(itemName);
         }
      }
