@@ -7,6 +7,8 @@ public class MainMenu : MonoBehaviour
     public string newGameScene;
     public GameObject continueButton;
     public string loadGameScene;
+    public GameObject infoPanel;
+     
     void Start()
     {
         if(PlayerPrefs.HasKey("Current_Scene"))
@@ -36,5 +38,10 @@ public class MainMenu : MonoBehaviour
     public void Exit()
     {
         Application.Quit();
+    }
+    public void Info()
+    {
+        infoPanel.SetActive(true);
+        
     }
 }

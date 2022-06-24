@@ -14,7 +14,6 @@ public class LoadingScene : MonoBehaviour
             if(waitToLoad <= 0)
             {
                 SceneManager.LoadScene(PlayerPrefs.GetString("Current_Scene"));
-
                 GameManager.instance.LoadData();
                 QuestManager.instance.LoadQuestData();
             }
